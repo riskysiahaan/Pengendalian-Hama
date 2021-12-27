@@ -13,14 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PesananController::class, 'index'])->name('home');
 
+Route::get('/register', [PesananController::class, 'index']);
 Auth::routes();
 
 Route::resource('pesanan', PesananController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('edit/{id}', [App\Http\Controllers\PesananController::class, 'edit'])->name('pesanan.edit');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('get-pesanan', [PesananController::class, 'getPesanan'])->name('get-pesanan');
