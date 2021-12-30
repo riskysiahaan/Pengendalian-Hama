@@ -19,7 +19,7 @@ class PesananController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $collection = Pesanan::simplePaginate(2);
+            $collection = Pesanan::orderBy('created_at','asc')->paginate(5);
             return view('pesanan.list',compact('collection'));
         }
         return view('pesanan.main');

@@ -10,10 +10,10 @@
             </button>
             </div>
             <div class="col-md-12">
+                <h2 class="text-center m-4">DAFTAR PESANAN</h2>
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                            <h2>Daftar Pesanan</h2>
                             <div id="list_result"></div>
                         </div>
                     </div>
@@ -29,5 +29,22 @@
 @section('script')
 <script type="text/javascript">
     load_list(1);
+    $(document).ready(function(){
+        $(document).on('click', '.pagination a', function(event){
+            event.preventDefault(); 
+            var page = $(this).attr('href').split('page=')[1];
+            fetch_data(page);
+        });
+
+        function fetch_data(page)
+        {
+            $.ajax({
+            url:"?page="+page,
+            success:function(data){
+                $('#list_result').html(data);
+            }
+            });
+        }
+    });
 </script>
 @endsection

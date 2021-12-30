@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-bordered datatable">
+    <table class="table table-borderless datatable">
         <thead>
             <tr class="table-primary">
                 <th>No</th>
@@ -65,4 +65,4 @@
     </table>
 </div>
 
-{{ $collection->links() }}
+{{$collection->links()}}
